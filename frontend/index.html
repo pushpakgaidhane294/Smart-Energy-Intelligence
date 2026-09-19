@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Energy Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">Smart Energy Intelligence</h1>
+                <p class="subtitle">Industrial Electricity Demand Forecasting & Anomaly Detection</p>
+            </div>
+            <div class="api-status">
+                <span class="status-label">API Status:</span>
+                <span id="apiStatus" class="status-badge">Checking...</span>
+            </div>
+        </header>
+
+        <!-- Dashboard Cards -->
+        <div class="dashboard-cards">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Average Consumption</h3>
+                    <span class="card-icon">⚡</span>
+                </div>
+                <div class="card-value" id="avgConsumption">--</div>
+                <div class="card-unit">kWh</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Maximum Consumption</h3>
+                    <span class="card-icon">📈</span>
+                </div>
+                <div class="card-value" id="maxConsumption">--</div>
+                <div class="card-unit">kWh</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Predicted Demand</h3>
+                    <span class="card-icon">🎯</span>
+                </div>
+                <div class="card-value" id="predictedDemand">--</div>
+                <div class="card-unit">kWh</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Detected Anomalies</h3>
+                    <span class="card-icon">⚠️</span>
+                </div>
+                <div class="card-value" id="detectedAnomalies">--</div>
+                <div class="card-unit">records</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>R² Score</h3>
+                    <span class="card-icon">📊</span>
+                </div>
+                <div class="card-value" id="r2Score">--</div>
+                <div class="card-unit">score</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>RMSE</h3>
+                    <span class="card-icon">🎯</span>
+                </div>
+                <div class="card-value" id="rmseScore">--</div>
+                <div class="card-unit">kWh</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="chart-container">
+                <h2>Historical Electricity Consumption</h2>
+                <canvas id="consumptionChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>Actual vs Predicted Consumption</h2>
+                <canvas id="forecastChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>Anomaly Detection</h2>
+                <canvas id="anomalyChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>Consumption by Hour</h2>
+                <canvas id="hourlyChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Forecast Section -->
+        <div class="forecast-section">
+            <div class="forecast-card">
+                <h2>Forecast Information</h2>
+                <div class="forecast-details">
+                    <div class="forecast-item">
+                        <span class="forecast-label">Model:</span>
+                        <span class="forecast-value" id="forecastModel">Random Forest Regression</span>
+                    </div>
+                    <div class="forecast-item">
+                        <span class="forecast-label">MAE:</span>
+                        <span class="forecast-value" id="forecastMAE">-- kWh</span>
+                    </div>
+                    <div class="forecast-item">
+                        <span class="forecast-label">RMSE:</span>
+                        <span class="forecast-value" id="forecastRMSE">-- kWh</span>
+                    </div>
+                    <div class="forecast-item">
+                        <span class="forecast-label">R²:</span>
+                        <span class="forecast-value" id="forecastR2">--</span>
+                    </div>
+                </div>
+                <p class="forecast-note">Predictions are estimates based on historical consumption patterns.</p>
+            </div>
+        </div>
+
+        <!-- Anomaly Table Section -->
+        <div class="anomaly-section">
+            <h2>Detected Anomalies</h2>
+            <div class="table-container">
+                <table class="anomaly-table">
+                    <thead>
+                        <tr>
+                            <th>Date/Time</th>
+                            <th>Consumption (kWh)</th>
+                            <th>Load Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="anomalyTableBody">
+                        <tr>
+                            <td colspan="4" class="loading-message">Loading anomaly data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message hidden">
+            <p>Unable to load data from the backend. Please ensure the API is running.</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
