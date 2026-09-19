@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Smart Energy Intelligence
 
 ## Industrial Electricity Demand Forecasting & Anomaly Detection System
@@ -387,3 +388,6 @@ For issues or questions, please refer to the project documentation or create an 
 ---
 
 **Note**: Model metrics and results will be populated after executing the training scripts. The current README provides a framework for the complete system.
+=======
+# Smart-Energy-Intelligence
+>>>>>>> 37dd2ee32a916b5f6ebca6e134606b9fbeda1121
